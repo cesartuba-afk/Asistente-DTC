@@ -72,7 +72,7 @@ Se instalan automáticamente desde `requirements.txt`:
 
 ## 🆘 Problemas comunes
 
-- **La app no abre en Render / “Listening on wrong port”**  
+- **La app no abre en Render / “Listening on wrong port”**
   Asegurate de haber aplicado el bloque `os.environ['PORT']` en el `start_server` y `host="0.0.0.0"`.
 
 - **“ModuleNotFoundError: pywebio/reportlab”**  
@@ -86,6 +86,49 @@ Se instalan automáticamente desde `requirements.txt`:
 ## 🔒 Seguridad
 - La app no pide credenciales ni guarda datos.
 - Si deseás proteger el acceso, podés **restringir por IP** con reglas de Render o incorporar una clave simple en el `input_group`.
+
+---
+
+## 📱 App móvil Flutter para escanear con ELM327 v1.5
+
+En la carpeta [`elm327_scanner`](elm327_scanner) se incluye una app Flutter de ejemplo lista para conectarse a un adaptador **ELM327 v1.5** por Bluetooth clásico.
+
+### Características principales
+
+- Descubrimiento de dispositivos Bluetooth cercanos y control del estado del adaptador.
+- Emparejamiento con el módulo ELM327 y envío de comandos AT comunes para inicializarlo.
+- Paneles en tiempo real que muestran los sensores OBD-II disponibles actualizados cinco veces por segundo.
+- Botones para leer información del vehículo (VIN, PIDs disponibles) y obtener o borrar códigos de falla (DTC).
+- Manejo básico de estados, errores y respuestas del OBD-II usando `provider`.
+
+### Pasos para ejecutar
+
+1. **Instalá Flutter** siguiendo la [documentación oficial](https://docs.flutter.dev/get-started/install) y asegurate de tener un dispositivo Android con Bluetooth clásico.
+2. Desde la raíz del repositorio, instalá las dependencias:
+
+   ```bash
+   cd elm327_scanner
+   flutter pub get
+   ```
+
+3. Conecta tu dispositivo físico (o usa un emulador con soporte Bluetooth) y ejecutá la app:
+
+   ```bash
+   flutter run
+   ```
+
+4. Emparejá el ELM327 desde la app y utilizá los botones para consultar o borrar DTC.
+
+> **Nota:** El paquete [`flutter_bluetooth_serial`](https://pub.dev/packages/flutter_bluetooth_serial) requiere permisos adicionales en Android. Revisa y ajusta los archivos de configuración (por ejemplo `android/app/src/main/AndroidManifest.xml`) según tu caso de uso antes de distribuir la app.
+>
+> Para ejecutar la app desde un navegador (por ejemplo `flutter run -d chrome`) primero habilitá el soporte web en tu instalación de Flutter y regenerá los archivos de plataforma:
+>
+> ```bash
+> flutter config --enable-web
+> flutter create . --platforms=web
+> ```
+>
+> Sin estos pasos, la compilación para web mostrará un error indicando que el proyecto no está configurado para esa plataforma.
 
 ---
 
