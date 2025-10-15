@@ -97,6 +97,7 @@ En la carpeta [`elm327_scanner`](elm327_scanner) se incluye una app Flutter de e
 
 - Descubrimiento de dispositivos Bluetooth cercanos y control del estado del adaptador.
 - Emparejamiento con el módulo ELM327 y envío de comandos AT comunes para inicializarlo.
+- Paneles en tiempo real que muestran los sensores OBD-II disponibles actualizados cinco veces por segundo.
 - Botones para leer información del vehículo (VIN, PIDs disponibles) y obtener o borrar códigos de falla (DTC).
 - Manejo básico de estados, errores y respuestas del OBD-II usando `provider`.
 
