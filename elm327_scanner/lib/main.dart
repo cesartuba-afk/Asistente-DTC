@@ -76,11 +76,15 @@ class BluetoothScannerPage extends StatelessWidget {
               child: ListView.builder(
                 itemCount: scanner.devices.length,
                 itemBuilder: (context, index) {
-                  final device = scanner.devices[index];
-                  final isConnected = session.connectedDevice?.address == device.address;
+                  final result = scanner.devices[index];
+                  final device = result.device;
+                  final isConnected =
+                      session.connectedDevice?.address == device.address;
                   return ListTile(
-                    title: Text(device.name ?? 'Dispositivo sin nombre'),
-                    subtitle: Text(device.address ?? 'Dirección desconocida'),
+                    title:
+                        Text(device.name ?? 'Dispositivo sin nombre'),
+                    subtitle:
+                        Text(device.address ?? 'Dirección desconocida'),
                     trailing: isConnected
                         ? const Icon(Icons.check_circle, color: Colors.green)
                         : null,
@@ -88,7 +92,7 @@ class BluetoothScannerPage extends StatelessWidget {
                       if (isConnected) {
                         await session.disconnect();
                       } else {
-                        await session.connect(device);
+                        await session.connect(result);
                       }
                     },
                   );

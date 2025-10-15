@@ -119,6 +119,15 @@ En la carpeta [`elm327_scanner`](elm327_scanner) se incluye una app Flutter de e
 4. Emparejá el ELM327 desde la app y utilizá los botones para consultar o borrar DTC.
 
 > **Nota:** El paquete [`flutter_bluetooth_serial`](https://pub.dev/packages/flutter_bluetooth_serial) requiere permisos adicionales en Android. Revisa y ajusta los archivos de configuración (por ejemplo `android/app/src/main/AndroidManifest.xml`) según tu caso de uso antes de distribuir la app.
+>
+> Para ejecutar la app desde un navegador (por ejemplo `flutter run -d chrome`) primero habilitá el soporte web en tu instalación de Flutter y regenerá los archivos de plataforma:
+>
+> ```bash
+> flutter config --enable-web
+> flutter create . --platforms=web
+> ```
+>
+> Sin estos pasos, la compilación para web mostrará un error indicando que el proyecto no está configurado para esa plataforma.
 
 ---
 
